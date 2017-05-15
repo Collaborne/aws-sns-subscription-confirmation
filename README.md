@@ -18,7 +18,7 @@ const snsSubscriptionConfirmation = require('aws-sns-subscription-confirmation')
 
 const app = express();
 
-// Fix the content type for body-parser
+// Fix the wrong request content-type as required by the body-parser
 app.use(snsSubscriptionConfirmation.overrideContentType());
 app.use(bodyParser.json());
 app.use(snsSubscriptionConfirmation.snsConfirmHandler());
