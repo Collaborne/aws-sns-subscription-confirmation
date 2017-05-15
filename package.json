@@ -1,0 +1,23 @@
+{
+  "name": "aws-sns-subscription-confirmation",
+  "version": "0.0.0",
+  "description": "Express middleware (NodeJS) to handle SNS subscription confirmation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Collaborne/aws-sns-subscription-confirmation.git"
+  },
+  "author": "ronny.roeller@collaborne.com",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Collaborne/aws-sns-subscription-confirmation/issues"
+  },
+  "homepage": "https://github.com/Collaborne/aws-sns-subscription-confirmation#readme",
+  "dependencies": {
+    "libxmljs-mt": "^0.18.0",
+    "request": "^2.81.0"
+  }
+}
