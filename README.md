@@ -1,4 +1,6 @@
 # aws-sns-subscription-confirmation
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Collaborne/aws-sns-subscription-confirmation.svg)](https://greenkeeper.io/)
 Express middleware (NodeJS) to handle SNS subscription confirmation
 
 ## Usage
