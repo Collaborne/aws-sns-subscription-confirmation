@@ -1,5 +1,5 @@
 # aws-sns-subscription-confirmation
-Express middleware (NodeJS) to handle SNS subscription confirmation
+Express middleware (NodeJS) to respond to [SNS subscription confirmations](http://docs.aws.amazon.com/sns/latest/dg/SendMessageToHttp.html).
 
 ## Usage
 
