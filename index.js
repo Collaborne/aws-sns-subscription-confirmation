@@ -1,5 +1,7 @@
 'use strict';
 
+const debug = require('debug')('aws-sns-subscription-notification');
+
 const libxmljs = require('libxmljs-mt');
 const request = require('request');
 
@@ -19,26 +21,17 @@ function overrideContentType() {
 }
 
 /**
- * The logger used for sending debug/information messages.
- *
- * @typedef Logger
- * @property {Function} info
- * @property {Function} debug
- */
-
-/**
  * Middleware to handle SNS subscription confirmations
  *
- * @param {Logger} [logger=console]
  * @returns
  */
-function snsConfirmHandler(logger = console) {
+function snsConfirmHandler() {
 	return (req, res, next) => {
 		// Handle call for SNS confirmation
 		// @see http://docs.aws.amazon.com/sns/latest/dg/SendMessageToHttp.html
 		if (req.headers['x-amz-sns-message-type'] === 'SubscriptionConfirmation') {
 			const subscribeUrl = req.body.SubscribeURL;
-			logger.debug(`Received SubscriptionConfirmation request: ${subscribeUrl}`);
+			debug(`Received SubscriptionConfirmation request: ${subscribeUrl}`);
 
 			return request({ uri: subscribeUrl }, (err, response, body) => {
 				if (err) {
@@ -58,7 +51,7 @@ function snsConfirmHandler(logger = console) {
 
 					const subscriptionArn = subscriptionArnNode.text();
 
-					logger.info(`Subscription: ${subscriptionArn}`);
+					debug(`Subscription: ${subscriptionArn}`);
 					return res.send('Subscribed');
 				});
 			});

@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Collaborne/aws-sns-subscription-confirmation#readme",
   "dependencies": {
+    "debug": "^2.6.6",
     "libxmljs-mt": "^0.18.0",
     "request": "^2.81.0"
   },
