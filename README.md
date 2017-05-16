@@ -1,4 +1,5 @@
-# aws-sns-subscription-confirmation
+# aws-sns-subscription-confirmation [![Build Status](https://travis-ci.org/Collaborne/aws-sns-subscription-confirmation.svg?branch=master)](https://travis-ci.org/Collaborne/aws-sns-subscription-confirmation)
+
 Express middleware (NodeJS) to respond to [SNS subscription confirmations](http://docs.aws.amazon.com/sns/latest/dg/SendMessageToHttp.html).
 
 ## Usage
