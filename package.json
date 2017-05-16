@@ -4,6 +4,8 @@
   "description": "Express middleware (NodeJS) to handle SNS subscription confirmation",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint .",
+    "prepublish": "npm run lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,5 +21,8 @@
   "dependencies": {
     "libxmljs-mt": "^0.18.0",
     "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0"
   }
 }
