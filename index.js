@@ -18,6 +18,20 @@ function overrideContentType() {
 	};
 }
 
+/**
+ * The logger used for sending debug/information messages.
+ *
+ * @typedef Logger
+ * @property {Function} info
+ * @property {Function} debug
+ */
+
+/**
+ * Middleware to handle SNS subscription confirmations
+ *
+ * @param {Logger} [logger=console]
+ * @returns
+ */
 function snsConfirmHandler(logger = console) {
 	return (req, res, next) => {
 		// Handle call for SNS confirmation
