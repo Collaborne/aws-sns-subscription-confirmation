@@ -1,6 +1,6 @@
 {
   "name": "aws-sns-subscription-confirmation",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Express middleware (NodeJS) to handle SNS subscription confirmation",
   "main": "index.js",
   "scripts": {
