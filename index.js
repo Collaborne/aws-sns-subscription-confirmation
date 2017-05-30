@@ -2,7 +2,7 @@
 
 const debug = require('debug')('aws-sns-subscription-notification');
 
-const libxmljs = require('libxmljs-mt');
+const xml2js = require('xml2js');
 const request = require('request');
 
 /**
@@ -39,18 +39,23 @@ function snsConfirmHandler() {
 				}
 
 				// Parse the response and extract the subscription ARN
-				return libxmljs.Document.fromXmlAsync(body, function callback(err, doc) {
+				const parser = new xml2js.Parser();
+				return parser.parseString(body, function callback(err, doc) {
 					if (err) {
 						return res.status(400).send({error: err.message});
 					}
 
-					const subscriptionArnNode = doc.get('//aws:ConfirmSubscriptionResult/aws:SubscriptionArn', { aws: 'http://sns.amazonaws.com/doc/2010-03-31/'});
-					if (!subscriptionArnNode) {
-						return res.status(400).send({error: 'Cannot find SubscriptionArn node'});
+					let subscriptionArn;
+					try {
+						subscriptionArn = doc.ConfirmSubscriptionResponse.ConfirmSubscriptionResult[0].SubscriptionArn[0];
+						if (!subscriptionArn) {
+							return res.status(400).send({ error: 'Cannot find SubscriptionArn' });
+						}
+						debug(`Subscription: ${subscriptionArn}`);
+					} catch (e) {
+						// Ignore errors related to accessing the value
+						return res.status(400).send({ error: 'Cannot find SubscriptionArn' });
 					}
-
-					const subscriptionArn = subscriptionArnNode.text();
-					debug(`Subscription: ${subscriptionArn}`);
 
 					// Retain the subscription ARN on the request for testing
 					res.subscriptionArn = subscriptionArn;
