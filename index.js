@@ -50,8 +50,10 @@ function snsConfirmHandler() {
 					}
 
 					const subscriptionArn = subscriptionArnNode.text();
-
 					debug(`Subscription: ${subscriptionArn}`);
+
+					// Retain the subscription ARN on the request for testing
+					res.subscriptionArn = subscriptionArn;
 					return res.send('Subscribed');
 				});
 			});
